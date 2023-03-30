@@ -7,6 +7,9 @@ class Pawn(p):
         self.team = team
         self.pos = pos
 
+    def is_legal(self, board, pos):
+        return super().is_legal(pos)
+
     def is_promote(self, board):
         if (self.team):
             if (board.curr_pos() == 0):
@@ -41,7 +44,7 @@ class Pawn(p):
     def get_type(self):
         return "P"
     
-    def play(self, pos, board):
+    def play(self, board, pos):
         if (self.is_legal(board, pos)):
             self.pos = pos
             return True
