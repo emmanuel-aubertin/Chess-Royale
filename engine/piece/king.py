@@ -1,14 +1,11 @@
 from piece import Piece as p
 
 class King(p):
-    def __init__(self, team):
+    def __init__(self, team, pos):
         self.team = team
-        if(team == 1):
-            self.pos = [4, 0]
-        else:
-            self.pos = [4, 7]
+        self.pos = pos
 
-    def is_legal(board, pos):
+    def is_legal(self, board, pos):
         if(not super().is_legal(pos)): # If not in board
             return False
         # NEED TO CHECK IF IT'S A SAFE PLACE
@@ -19,7 +16,7 @@ class King(p):
         pos_list = []
         for i in range (-1, 2):
             for j in range (-1, 2):
-                if(self.is_legal()):
+                if(self.is_legal(board, [self.pos[0] + i, self.pos[1] + j])):
                     pos_list.append([self.pos[0] + i, self.pos[1] + j])
                     print(i, j)
         return pos_list

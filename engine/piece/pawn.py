@@ -3,8 +3,9 @@ from piece import Piece as p
 class Pawn(p):
     is_promoted = False
 
-    def __init__(self, team):
+    def __init__(self, team, pos):
         self.team = team
+        self.pos = pos
 
     def is_promote(self, board):
         if (self.team):
@@ -14,8 +15,25 @@ class Pawn(p):
             if (board.curr_pos() == 7):
                 self.promote()
     
-    def get_playable_pos(board):
+    def get_playable_pos(self, board):
         pos_list = []
-        # Le pion peut bouger en [x-1][y+1], [x+1][y+1] SI IL Y A UNE PIECE ENNEMIE
-        # en [x][y+1] SI IL N Y A PAS DE PIECE ENNEMIE et en [x][y+2] SI IL EST 
-        # TOUJOURS A SA POSITION DE DEPART
+        board_list = board.get_board()
+        if(self.team==0):
+            if(board_list[self.pos[0], self.pos[1] - 1]):
+                pos_list.append([self.pos[0], self.pos[1] +- 1])
+            if(board_list[self.pos[0] + 1, self.pos[1] - 1]):
+                pos_list.append([self.pos[0] + 1, self.pos[1] - 1])
+            if(board_list[self.pos[0] - 1, self.pos[1] - 1]):
+                pos_list.append([self.pos[0] - 1, self.pos[1] - 1])
+            if(self.pos[1] == 6):
+                pos_list.append([self.pos[0], self.pos[1] - 2])
+
+        if(self.team==1):
+            if(board_list[self.pos[0], self.pos[1] + 1]):
+                pos_list.append([self.pos[0], self.pos[1] + 1])
+            if(board_list[self.pos[0] + 1, self.pos[1] + 1]):
+                pos_list.append([self.pos[0] + 1, self.pos[1] + 1])
+            if(board_list[self.pos[0] - 1, self.pos[1] + 1]):
+                pos_list.append([self.pos[0] - 1, self.pos[1] + 1])
+            if(self.pos[1] == 1):
+                pos_list.append([self.pos[0], self.pos[1] + 2])

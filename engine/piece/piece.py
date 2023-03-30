@@ -30,4 +30,3 @@ class Piece(ABC):
         # P = Pawn      |   R = Rook (Tower)
         # B = Bishop    |   N = Knight
         pass
-
