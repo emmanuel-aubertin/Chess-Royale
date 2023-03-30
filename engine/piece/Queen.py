@@ -1,6 +1,5 @@
 from piece import Piece as p
 
-
 class Queen(p):
 
     def __init__(self, team):
@@ -38,16 +37,6 @@ class Queen(p):
                     pos_list.append([i, j])
                     print(i, j)
         return pos_list
-
-    def is_checkmate(self, board):
-        board_list = board.get_board()
-        for i in range(0, 8):
-            for j in range(0, 8):
-                if (board_list[i][j] != None and board_list[i][j].team != self.team):
-                    for e in board_list[i][j].get_attacking_pos():
-                        if (e[0] == self.pos[0] and e[1] == self.pos[1]):
-                            return True
-        return False
 
     def is_playable(self, board, pos):
         playable_pos = self.get_playable_pos(board)

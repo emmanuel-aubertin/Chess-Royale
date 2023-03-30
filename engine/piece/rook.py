@@ -10,7 +10,7 @@ class Rook(p):
         board_list = board.get_board()
         if(not super().is_legal(pos)): # If not in board
             return False
-        if( pos[0] != self.pos[0] and pos[1] != self.pos[1] or  pos[1] != self.pos[1] and pos[0] != self.pos[0]):
+        if(pos[0] != self.pos[0] and pos[1] != self.pos[1] or  pos[1] != self.pos[1] and pos[0] != self.pos[0]):
             return False
         if(self.pos[1] == pos[1]): # if horizontal move
             for i in range(self.pos[0], pos[0]):
@@ -64,7 +64,6 @@ class Rook(p):
             if(board_list[e[0]][e[1]]): # If there is a piece on playable case add it
                 pos_list.append(e)
         return pos_list
-
 
     def is_playable(self, board, pos):
         playable_pos = self.get_playable_pos(board)

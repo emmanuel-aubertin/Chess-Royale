@@ -14,8 +14,12 @@ class Pawn(p):
             if (board.curr_pos() == 7):
                 self.promote()
     
-    def get_playable_pos(board):
+    def get_playable_pos(self, board):
         pos_list = []
-        # Le pion peut bouger en [x-1][y+1], [x+1][y+1] SI IL Y A UNE PIECE ENNEMIE
-        # en [x][y+1] SI IL N Y A PAS DE PIECE ENNEMIE et en [x][y+2] SI IL EST 
-        # TOUJOURS A SA POSITION DE DEPART
+        board_list = board.get_board()
+        if(board_list[self.pos[0], self.pos[1] + 1]):
+            pos_list.append([self.pos[0], self.pos[1] + 1])
+        if(board_list[self.pos[0] + 1, self.pos[1] + 1]):
+            pos_list.append([self.pos[0] + 1, self.pos[1] + 1])
+        if(board_list[self.pos[0] - 1, self.pos[1] + 1]):
+            pos_list.append([self.pos[0] - 1, self.pos[1] + 1])
