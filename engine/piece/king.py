@@ -1,18 +1,17 @@
 from piece import Piece as p
 
 class King(p):
-
     def __init__(self, team):
         self.team = team
         if(team == 1):
-            self.pos = [3, 0]
+            self.pos = [4, 0]
         else:
-            self.pos = [3, 7]
+            self.pos = [4, 7]
 
     def is_legal(board, pos):
         if(not super().is_legal(pos)): # If not in board
             return False
-        # NEED TO CHECK IF IT'S A SAFE PLACEÒ
+        # NEED TO CHECK IF IT'S A SAFE PLACE
         return True
 
     # Get possible next move
@@ -46,7 +45,6 @@ class King(p):
                         if(e[0] == self.pos[0] and e[1] == self.pos[1]):
                             return True
         return False
-
 
     def is_playable(self, board, pos):
         playable_pos = self.get_playable_pos(board)
