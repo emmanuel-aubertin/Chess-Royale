@@ -5,7 +5,6 @@ class Rook(p):
         self.team = team
         self.pos = pos
 
-
     def is_legal(self, board, pos):
         board_list = board.get_board()
         if(not super().is_legal(pos)): # If not in board

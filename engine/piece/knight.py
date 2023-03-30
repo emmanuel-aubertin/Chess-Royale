@@ -3,9 +3,7 @@ from piece import Piece as p
 class Knight:
     def __init__(self, team, pos):
         self.team = team
-        self.id = id
         self.pos = pos
-
 
     def get_playable_pos(self, board): 
         pos_list = []

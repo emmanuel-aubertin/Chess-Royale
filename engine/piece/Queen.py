@@ -1,7 +1,6 @@
 from piece import Piece as p
 
 class Queen(p):
-
     def __init__(self, team, pos):
         self.team = team
         self.pos = pos

@@ -24,3 +24,5 @@ class Pawn(p):
             pos_list.append([self.pos[0] + 1, self.pos[1] + 1])
         if(board_list[self.pos[0] - 1, self.pos[1] + 1]):
             pos_list.append([self.pos[0] - 1, self.pos[1] + 1])
+
+        # Rajouter le en-passant + avancer de 2 cases quand le pion n'a pas bougé
