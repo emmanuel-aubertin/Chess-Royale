@@ -1,12 +1,9 @@
 from piece import Piece as p
 
 class King(p):
-    def __init__(self, team):
+    def __init__(self, team, pos):
         self.team = team
-        if(team == 1):
-            self.pos = [4, 0]
-        else:
-            self.pos = [4, 7]
+        self.pos = pos
 
     def is_legal(self, board, pos):
         if(not super().is_legal(pos)): # If not in board

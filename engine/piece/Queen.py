@@ -2,12 +2,9 @@ from piece import Piece as p
 
 class Queen(p):
 
-    def __init__(self, team):
+    def __init__(self, team, pos):
         self.team = team
-        if (team == 1):#White
-            self.pos = [3, 0]
-        else:
-            self.pos = [3, 7]
+        self.pos = pos
 
     def is_legal(board, pos):
         if (not super().is_legal(pos)):  # If not in board

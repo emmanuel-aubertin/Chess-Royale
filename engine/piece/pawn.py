@@ -3,8 +3,9 @@ from piece import Piece as p
 class Pawn(p):
     is_promoted = False
 
-    def __init__(self, team):
+    def __init__(self, team, pos):
         self.team = team
+        self.pos = pos
 
     def is_promote(self, board):
         if (self.team):

@@ -1,20 +1,11 @@
 from piece import Piece as p
 
 class Knight:
-    def __init__(self, team, id):
+    def __init__(self, team, pos):
         self.team = team
         self.id = id
-        self.pos = pos # Position du knight
-        if (team == 0):
-            if (id==0):
-                pos = [1, 7]
-            else:
-                pos = [6, 7]
-        else:
-            if (id==0):
-                pos = [1, 0]
-            else:
-                pos = [6, 0]
+        self.pos = pos
+
 
     def get_playable_pos(self, board): 
         pos_list = []
