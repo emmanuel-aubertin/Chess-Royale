@@ -18,10 +18,10 @@ class King(p):
     # Get possible next move
     def get_playable_pos(self, board):
         pos_list = []
-        for i in range (0, 3):
-            for j in range (0, 3):
+        for i in range (-1, 2):
+            for j in range (-1, 2):
                 if(self.is_legal()):
-                    pos_list.append([i, j])
+                    pos_list.append([self.pos[0] + i, self.pos[1] + j])
                     print(i, j)
         return pos_list
 
