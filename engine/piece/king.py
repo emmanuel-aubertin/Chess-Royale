@@ -9,7 +9,7 @@ class King(p):
         else:
             self.pos = [3, 7]
 
-    def is_legal(board, pos):
+    def is_legal(self, board, pos):
         if(not super().is_legal(pos)): # If not in board
             return False
         # NEED TO CHECK IF IT'S A SAFE PLACEÒ
@@ -20,7 +20,7 @@ class King(p):
         pos_list = []
         for i in range (-1, 2):
             for j in range (-1, 2):
-                if(self.is_legal()):
+                if(self.is_legal(board, [self.pos[0] + i, self.pos[1] + j])):
                     pos_list.append([self.pos[0] + i, self.pos[1] + j])
                     print(i, j)
         return pos_list
