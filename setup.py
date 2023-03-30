@@ -2,7 +2,7 @@ import platform
 import subprocess
 
 
-PYTHON_DEPENDENCIES = "tk "
+PYTHON_DEPENDENCIES = "tk Pillow "
 
 OS_TYPE = platform.system()
 PROGNAME = "Chess Royal"
