@@ -1,9 +1,9 @@
 from piece import Piece as p
 
 class King(p):
-
     def __init__(self, team):
         self.team = team
+        self.is_rockable = True
         if(team == 1):
             self.pos = [3, 0]
         else:
@@ -54,3 +54,6 @@ class King(p):
             if(e == pos):
                 return True
         return False
+
+    def play(self):
+        self.is_rockable = False
