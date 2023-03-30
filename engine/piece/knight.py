@@ -1,8 +1,9 @@
 from piece import Piece as p
 
 class Knight:
-    def __init__(self, team):
+    def __init__(self, team, pos):
         self.team = team
+        self.pos = pos
 
     def is_legal(self, pos):
         return super().is_legal(pos)
