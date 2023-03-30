@@ -40,3 +40,9 @@ class Pawn(p):
 
     def get_type(self):
         return "P"
+    
+    def play(self, pos, board):
+        if (self.is_legal(board, pos)):
+            self.pos = pos
+            return True
+        return False

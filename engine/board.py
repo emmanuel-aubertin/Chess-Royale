@@ -27,11 +27,11 @@ class Board:
         self.board[0][2] = Bishop(0, [0, 2])
         self.board[7][2] = Bishop(1, [7, 2])
 
-        self.board[0][3] = King(0, [0, 3])
-        self.board[7][3] = King(1, [7, 3])
+        self.board[0][3] = Queen(0, [0, 3])
+        self.board[7][3] = Queen(1, [7, 3])
 
-        self.board[0][4] = Queen(0, [0, 4])
-        self.board[7][4] = Queen(1, [7, 4])
+        self.board[0][4] = King(0, [0, 4])
+        self.board[7][4] = King(1, [7, 4])
 
         self.board[0][5] = Bishop(0, [0, 5])
         self.board[7][5] = Bishop(1, [7, 5])
@@ -41,6 +41,23 @@ class Board:
 
         self.board[0][7] = Rook(0, [0, 7])
         self.board[7][7] = Rook(1, [7, 7])
+
+    def get_board(self):
+        return self.board
+
+    def play(self, team, pos, new_pos):
+        print("\n \tTeam = " + str(team) + "\tPos " + str(pos) + "\tNew Pos : " + str(new_pos))
+        if (team == 0):
+            if (self.board[pos[0]][pos[1]]):   # checker si c'est égal à une pièce blanche
+                self.board[new_pos[0]][new_pos[1]] = self.board[pos[0]][pos[1]]
+                self.board[pos[0]][pos[1]] = None
+                return True
+        else:
+            if (self.board[pos[0]][pos[1]]):
+                self.board[new_pos[0]][new_pos[1]] = self.board[pos[0]][pos[1]]
+                self.board[pos[0]][pos[1]] = None
+                return True
+        return False
 
     def print_board(self):
         for i in range(0, 8):

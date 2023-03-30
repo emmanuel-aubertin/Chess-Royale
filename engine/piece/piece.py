@@ -2,8 +2,6 @@ from abc import ABC, abstractmethod
 
 # Extends ABC for create an abstract class
 class Piece:
-
-
     def get_playable_pos(board):
         pass
 
