@@ -1,4 +1,4 @@
-from piece import Piece as p
+from engine.piece.piece import Piece as p
 
 class Bishop:
     def __init__(self, team, pos):  # pos = 2, 5
@@ -59,3 +59,6 @@ class Bishop:
     
     def is_promo(self, board, pos):
         return False
+    
+    def get_type(self):
+        return "B"

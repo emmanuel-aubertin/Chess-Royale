@@ -1,4 +1,4 @@
-from piece import Piece as p
+from engine.piece.piece import Piece as p
 
 class Pawn(p):
     is_promoted = False
@@ -37,3 +37,6 @@ class Pawn(p):
                 pos_list.append([self.pos[0] - 1, self.pos[1] + 1])
             if(self.pos[1] == 1):
                 pos_list.append([self.pos[0], self.pos[1] + 2])
+
+    def get_type(self):
+        return "P"

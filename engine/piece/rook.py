@@ -1,4 +1,4 @@
-from piece import Piece as p
+from engine.piece.piece import Piece as p
 
 class Rook(p):
     def __init__(self, team, pos):
@@ -70,3 +70,6 @@ class Rook(p):
             if(e == pos):
                 return True
         return False
+
+    def get_type(self):
+        return "R"

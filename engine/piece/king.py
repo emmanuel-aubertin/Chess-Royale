@@ -1,4 +1,4 @@
-from piece import Piece as p
+from engine.piece.piece import Piece as p
 
 class King(p):
     def __init__(self, team, pos):
@@ -49,3 +49,6 @@ class King(p):
             if(e == pos):
                 return True
         return False
+
+    def get_type(self):
+        return "K"

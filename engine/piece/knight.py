@@ -1,4 +1,4 @@
-from piece import Piece as p
+from engine.piece.piece import Piece as p
 
 class Knight:
     def __init__(self, team, pos):
@@ -20,3 +20,6 @@ class Knight:
     
     def is_promo(self, board, pos):
         return False
+    
+    def get_type(self):
+        return "N"
