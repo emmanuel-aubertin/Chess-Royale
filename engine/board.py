@@ -10,6 +10,7 @@ class Board:
     
 
     def __init__(self):
+        print("NEW BOARD")
         board = [8][8]
         for i in range(0, 8):
             for j in range(0, 8):
