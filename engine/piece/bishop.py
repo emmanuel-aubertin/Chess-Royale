@@ -59,4 +59,3 @@ class Bishop:
     
     def is_promo(self, board, pos):
         return False
-

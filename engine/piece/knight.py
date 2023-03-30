@@ -17,3 +17,6 @@ class Knight:
             pos_list.append([self.pos[0] - 1, self.pos[1] - 2])
             pos_list.append([self.pos[0] + 1, self.pos[1] - 2])
         return pos_list
+    
+    def is_promo(self, board, pos):
+        return False
