@@ -18,11 +18,22 @@ class Pawn(p):
     def get_playable_pos(self, board):
         pos_list = []
         board_list = board.get_board()
-        if(board_list[self.pos[0], self.pos[1] + 1]):
-            pos_list.append([self.pos[0], self.pos[1] + 1])
-        if(board_list[self.pos[0] + 1, self.pos[1] + 1]):
-            pos_list.append([self.pos[0] + 1, self.pos[1] + 1])
-        if(board_list[self.pos[0] - 1, self.pos[1] + 1]):
-            pos_list.append([self.pos[0] - 1, self.pos[1] + 1])
+        if(self.team==0):
+            if(board_list[self.pos[0], self.pos[1] - 1]):
+                pos_list.append([self.pos[0], self.pos[1] +- 1])
+            if(board_list[self.pos[0] + 1, self.pos[1] - 1]):
+                pos_list.append([self.pos[0] + 1, self.pos[1] - 1])
+            if(board_list[self.pos[0] - 1, self.pos[1] - 1]):
+                pos_list.append([self.pos[0] - 1, self.pos[1] - 1])
+            if(self.pos[1] == 6):
+                pos_list.append([self.pos[0], self.pos[1] - 2])
 
-        # Rajouter le en-passant + avancer de 2 cases quand le pion n'a pas bougé
+        if(self.team==1):
+            if(board_list[self.pos[0], self.pos[1] + 1]):
+                pos_list.append([self.pos[0], self.pos[1] + 1])
+            if(board_list[self.pos[0] + 1, self.pos[1] + 1]):
+                pos_list.append([self.pos[0] + 1, self.pos[1] + 1])
+            if(board_list[self.pos[0] - 1, self.pos[1] + 1]):
+                pos_list.append([self.pos[0] - 1, self.pos[1] + 1])
+            if(self.pos[1] == 1):
+                pos_list.append([self.pos[0], self.pos[1] + 2])
