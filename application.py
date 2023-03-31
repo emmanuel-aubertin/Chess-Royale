@@ -1,8 +1,13 @@
 from tkinter import *
-from engine.board import Board as  Board
+from engine.board import Board as Board
+import playsound # pip install playsound==1.2.2 AppKit
+
+def OST():
+    playsound.playsound('sounds/OST.mp3', False)
+
+OST()
 
 # Definitions of main window
-
 board2=Board()
 
 item_select=[False]
