@@ -11,7 +11,8 @@ class Knight(p):
             print("Out of board")
             return False
         board_list = board.get_board()
-        
+        if(board_list[pos[0]][pos[1]] and board_list[pos[0]][pos[1]].team == self.team):
+            return False
         if(board_list[pos[0]][pos[1]]!=None):
             if(pos[0] == self.pos[0] + 2 and pos[1] == self.pos[1] + 1 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team):
                 return True
@@ -50,6 +51,7 @@ class Knight(p):
 
     def get_playable_pos(self, board): 
         pos_list = []
+        board_list = board.get_list()
         if(self.is_legal(board,self.pos)):
 
             pos_list.append([self.pos[0] + 2, self.pos[1] + 1])
