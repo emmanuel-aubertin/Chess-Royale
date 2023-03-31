@@ -2,18 +2,22 @@ import tkinter
 from tkinter import *
 # Definitions of main window
 
-item_select=False
-item_possibility=None
+item_selec=False
+item_possibilit=None
 canvas_item_possibility=list
 piece=None
 game_finish=False
-def callback(event):
+
+#Fonction to print futur positon of our piece
+def callback(event, item_select=item_selec, item_possibility=item_possibilit, piece=piece):
     fini=False
+    #Check if item was not selected
     if(item_select==False):
         value_x=0
         value_y=0
         x_done=False
         y_done=False
+        # Calcul position in our board
         for i in range(8):
             if(i*100>event.x and x_done!=True):
                 value_x=(i-1)*100
@@ -30,17 +34,19 @@ def callback(event):
             if(y_done and x_done):
                 break
         piece=board.get(value_x,value_y)
+        #If we find a piece we get is different possibility
         if(piece!=None):
             item_possibility=board.get(value_x,value_y).possibility
             for i in item_possibility:
                 position=i.get_position()
                 myoval=canvas.create_oval((position[0]*100)+30,(position[1]*100)+30,((position[0]+1)*100)-30,((position[1]+1)*100)-30)
                 canvas_item_possibility.append(myoval)
-    else:
+    else:#Check if a item is select
         value_x = 0
         value_y = 0
         x_done = False
         y_done = False
+        #Calcul position in our board
         for i in range(8):
             if (i * 100 > event.x and x_done != True):
                 value_x = (i - 1) * 100
@@ -57,14 +63,17 @@ def callback(event):
             if (y_done and x_done):
                 break
         piece_resultat=board.get(value_x,value_y)
+        #Search if where we clicke was a possibility
         for i in item_possibility:
             if(i[0]==value_x and i[1]==value_y):
                 piece.go(value_x,value_y)
+                #Check if the game is finish
                 if(board.is_finish()):
                     game_finish=True
                     fini=True
                     break
                 piece=None
+                #Destroy every possibility in the board
                 for j in canvas_item_possibility:
                     canvas.destroy(j)
                 item_select=False
@@ -76,7 +85,9 @@ def callback(event):
                     fini = True
                     game_finish=True
                 break
+        #In the case were you clicked in another piece
         if (piece_resultat != piece and fini==True):
+            #Check if you clicked was a piece . So we change possibility
             if(piece_resultat!=None):
                 for j in canvas_item_possibility:
                     canvas.destroy(j)
@@ -88,7 +99,6 @@ def callback(event):
                                                 ((position[0] + 1) * 100) - 30, ((position[1] + 1) * 100) - 30)
                     canvas_item_possibility.append(myoval)
 
-    print("clicked at", event.x, event.y)
 
 root = Tk()
 root.geometry("800x800")
@@ -175,9 +185,11 @@ def transition_second_screen():
 
     root.mainloop()
 
+#Button for transition
 button_game = Button(frame,text ="1vsAI",command=transition_second_screen)
 button_game.place(x=400,y=0)
 
+#Button to quit
 button_quit = Button(frame,text ="Quitter",command=root.destroy)
 button_quit.place(x=400,y=20)
 # Starting the window
