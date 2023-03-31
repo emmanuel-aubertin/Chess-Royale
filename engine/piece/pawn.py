@@ -13,6 +13,8 @@ class Pawn(p):
         if(not super().is_legal(pos)):
             print("Out of board")
             return False
+        if(board_list[pos[0]][pos[1]] and board_list[pos[0]][pos[1]].team == self.team):
+            return False
         print(str(pos[0]) + " == " + str(self.pos[0]-1) +"and " + str(pos[1])  + "== " + str(self.pos[1])  +" and  not " + str(board_list[pos[0]][pos[1]]) + " |||| " + str())
         if((pos[0] == self.pos[0]-1 and pos[1]) == self.pos[1] and not board_list[pos[0]][pos[1]]):
             return True

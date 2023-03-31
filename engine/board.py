@@ -74,3 +74,14 @@ class Board:
                     continue
                 print("0"+ "\t\t", end="")
             print()
+    
+    def get_king(self, team):
+        for i in range(0,8):
+            for j in range(0,8):
+                if(self.board[i][j] and self.board[i][j].get_type() == 'K' and self.board[i][j].team == team):
+                    return self.board[i][j]
+        return None
+
+    def is_check(self, team):
+        king = self.get_king(team)
+        return king.is_check(self)

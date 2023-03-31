@@ -11,6 +11,8 @@ class Rook(p):
         if(not super().is_legal(pos)): # If not in board
             print("Out of the broad")
             return False
+        if(board_list[pos[0]][pos[1]] and board_list[pos[0]][pos[1]].team == self.team):
+            return False
         if((pos[0] != self.pos[0] and pos[1] != self.pos[1])or ( pos[1] != self.pos[1] and pos[0] != self.pos[0])):
             return False
         if(self.pos[1] == pos[1]): # if horizontal move
@@ -65,7 +67,7 @@ class Rook(p):
     def get_attacking_pos(self, board):
         pos_list = []
         board_list = board.get_board()
-        playable_list = self.get_playable_pos()
+        playable_list = self.get_playable_pos(board)
         for e in playable_list:
             if(board_list[e[0]][e[1]]): # If there is a piece on playable case add it
                 pos_list.append(e)
