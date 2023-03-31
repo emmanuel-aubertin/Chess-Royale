@@ -1,4 +1,3 @@
-import tkinter
 from tkinter import *
 from engine.board import Board as  Board
 
@@ -26,24 +25,24 @@ canvas = Canvas(frame,width=800, height=800, bg='#b58863')
 canvas.pack(expand = YES)
 
 # Adding the board
-#board = PhotoImage(file = "images\standard-pack\Board.png")
+#board = PhotoImage(file = "images/standard-pack/Board.png")
 #canvas.create_image(400, 400, image = board)
 def transition_second_screen():
     root.geometry("800x800")
     root.title("Try")
 
     # Adding the board
-    board = PhotoImage(file="images\standard-pack\Board.png")
+    board = PhotoImage(file="images/standard-pack/Board.png")
     canvas.create_image(400, 400, image=board)
 
     # Adding pieces to the board
     # White
-    WP = PhotoImage(file="images\standard-pack\WP.png")
-    WR = PhotoImage(file="images\standard-pack\WR.png")
-    WB = PhotoImage(file="images\standard-pack\WB.png")
-    WQ = PhotoImage(file="images\standard-pack\WQ.png")
-    WK = PhotoImage(file="images\standard-pack\WK.png")
-    WN = PhotoImage(file="images\standard-pack\WN.png")
+    WP = PhotoImage(file="images/standard-pack/WP.png")
+    WR = PhotoImage(file="images/standard-pack/WR.png")
+    WB = PhotoImage(file="images/standard-pack/WB.png")
+    WQ = PhotoImage(file="images/standard-pack/WQ.png")
+    WK = PhotoImage(file="images/standard-pack/WK.png")
+    WN = PhotoImage(file="images/standard-pack/WN.png")
 
     WP1=canvas.create_image(0, 600, anchor=NW, image=WP)
     WP2=canvas.create_image(100, 600, anchor=NW, image=WP)
@@ -63,12 +62,12 @@ def transition_second_screen():
     WR2=canvas.create_image(700, 700, anchor=NW, image=WR)
 
     # Black
-    BP = PhotoImage(file="images\standard-pack\BP.png")
-    BR = PhotoImage(file="images\standard-pack\BR.png")
-    BB = PhotoImage(file="images\standard-pack\BB.png")
-    BQ = PhotoImage(file="images\standard-pack\BQ.png")
-    BK = PhotoImage(file="images\standard-pack\BK.png")
-    BN = PhotoImage(file="images\standard-pack\BN.png")
+    BP = PhotoImage(file="images/standard-pack/BP.png")
+    BR = PhotoImage(file="images/standard-pack/BR.png")
+    BB = PhotoImage(file="images/standard-pack/BB.png")
+    BQ = PhotoImage(file="images/standard-pack/BQ.png")
+    BK = PhotoImage(file="images/standard-pack/BK.png")
+    BN = PhotoImage(file="images/standard-pack/BN.png")
 
     BP1=canvas.create_image(0, 100, anchor=NW, image=BP)
     BP2=canvas.create_image(100, 100, anchor=NW, image=BP)
@@ -211,7 +210,7 @@ def transition_second_screen():
     root.mainloop()
 
 #Button for transition
-logo = PhotoImage(file="images\logo2.png")
+logo = PhotoImage(file="images/logo2.png")
 canvas.create_image(-100, 0, anchor=NW, image=logo)
 
 button_game = Button(

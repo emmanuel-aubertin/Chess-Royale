@@ -19,8 +19,3 @@ print("#####################################################")
 print(board.play(1, [0, 3], [4, 5]))
 print("\n\nMOVE\n\n")
 board.print_board()
-
-print("#####################################################")
-print(board.play(1, [0, 0], [2, 0]))
-print("\n\nMOVE\n\n")
-board.print_board()

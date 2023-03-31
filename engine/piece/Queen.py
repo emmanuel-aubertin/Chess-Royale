@@ -28,7 +28,7 @@ class Queen(p):
                     return False # There is a piece between the place and the rook 
         pos_1 = self.pos[1]
         pos_0 = self.pos[0]
-        for _ in range(self.pos[0]+1, pos[0]):
+        for _ in range(self.pos[0]+1, max(pos[0]+1, pos[1]+1)):
             if(self.pos[0] > pos[0]):
                 pos_0 -= 1
             else:
@@ -37,9 +37,15 @@ class Queen(p):
                 pos_1 -= 1
             else:
                 pos_1 += 1
-            if(pos_1 >= pos[1] or pos_0 >= pos[0] ):
-                break
             print("Checking pos ==> " + str(pos_0) + " " + str(pos_1))
+            if(pos_1 - pos[1] == 0):
+                if(pos_0 - pos[0]  != 0):
+                    return False
+                return True
+            if(pos_0 - pos[0]  == 0):
+                if(pos_1 - pos[1] != 0):
+                    return False
+                return True
             if(board_list[pos_0][pos_1]):
                 return False
         return True
