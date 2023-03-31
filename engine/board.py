@@ -20,7 +20,7 @@ class Board:
             self.board[1][i] = Pawn(1, [1, i])
             self.board[6][i] = Pawn(0, [6, i])
 
-        self.board[4][4] = Rook(1, [4, 4]) # 0, 0
+        self.board[4][4] = Rook(1, [4, 4]) # 0 0
         self.board[7][0] = Rook(0, [7, 0])
 
         self.board[0][1] = Knight(1, [0, 1]) 
@@ -32,7 +32,7 @@ class Board:
         self.board[0][3] = Queen(1, [0, 3])
         self.board[7][3] = Queen(0, [7, 3])
 
-        self.board[0][4] = King(1, [0, 4])
+        self.board[0][4] = King(1, [0, 4]) 
         self.board[7][4] = King(0, [7, 4])
 
         self.board[0][5] = Bishop(1, [0, 5])
