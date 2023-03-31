@@ -12,13 +12,19 @@ board.print_board()
 
 
 print("#####################################################")
-print(board.play(0, [0, 6], [0, 5]))
+print(board.play(1, [1, 1], [2, 1]))
 print("\n\nMOVE\n\n")
 board.print_board()
 sound()
 
 print("#####################################################")
-print(board.play(1, [4, 4], [0, 4]))
-print("MOVE\n\n")
+print(board.play(1, [0, 2], [2, 0]))
+print("\n\nMOVE\n\n")
+board.print_board()
+
+
+print("#####################################################")
+print(board.play(1, [2, 0], [7, 4]))
+print("\n\nMOVE\n\n")
 board.print_board()
 sound()

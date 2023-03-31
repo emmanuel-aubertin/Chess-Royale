@@ -11,7 +11,9 @@ class Piece:
     
     # True if pos is in the Board
     def is_legal(board, pos):
-        return (pos[0] < 8 and pos[0] >= 0 and pos[1] < 8 and pos[1] >= 0)
+        if (pos[0] < 8 and pos[0] >= 0 and pos[1] < 8 and pos[1] >= 0):
+            return True
+        return False
 
 
     def is_promo(board, pos):
