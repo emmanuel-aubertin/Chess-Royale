@@ -38,7 +38,7 @@ class Pawn(p):
         pos_list = []
         board_list = board.get_board()
         if(self.team==0):
-            if(board_list[self.pos[0], self.pos[1] - 1]):
+            if(board_list[self.pos[0]][ self.pos[1] - 1]):
                 pos_list.append([self.pos[0], self.pos[1] - 1])
             if(board_list[self.pos[0] + 1, self.pos[1] - 1]):
                 pos_list.append([self.pos[0] + 1, self.pos[1] - 1])
