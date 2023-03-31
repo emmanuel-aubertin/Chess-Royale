@@ -5,11 +5,43 @@ class Queen(p):
         self.team = team
         self.pos = pos
 
-    def is_legal(board, pos):
-        if (not super().is_legal(pos)):  # If not in board
+    def is_legal(self, board, pos):
+        print("Queen legal")
+        board_list = board.get_board()
+        if(not super().is_legal(pos)): # If not in board
+            print("Out of the broad")
             return False
-        if (board[pos[0]][pos[1]]!="none"):
-            return False
+        print("Checking horizontal/vertcal")
+
+        if(self.pos[1] == pos[1]): # if horizontal move
+            print("Vertical move")
+            for i in range(self.pos[0]+1, pos[0]):
+                print("Checking : "+ str(i) + " " + str(self.pos[1]))
+                if(board_list[i][self.pos[1]]):
+                    return False # There is a piece between the place and the rook
+        if(self.pos[0] == pos[0]): # if vertical move
+            print("Horizontal move")
+            for i in range(self.pos[1]+1, pos[1]):
+                print("i: " + str(i))
+                if(board_list[self.pos[0]][i]):
+                    print(str(board_list[i][self.pos[0]]))
+                    return False # There is a piece between the place and the rook 
+        pos_1 = self.pos[1]
+        pos_0 = self.pos[0]
+        for _ in range(self.pos[0]+1, pos[0]):
+            if(self.pos[0] > pos[0]):
+                pos_0 -= 1
+            else:
+                pos_0 += 1
+            if(self.pos[1] > pos[1]):
+                pos_1 -= 1
+            else:
+                pos_1 += 1
+            if(pos_1 >= pos[1] or pos_0 >= pos[0] ):
+                break
+            print("Checking pos ==> " + str(pos_0) + " " + str(pos_1))
+            if(board_list[pos_0][pos_1]):
+                return False
         return True
 
     # Get possible next move
