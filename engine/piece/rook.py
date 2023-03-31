@@ -16,8 +16,11 @@ class Rook(p):
                 if(board_list[self.pos[1]][i]):
                     return False # There is a piece between the place and the rook
         if(self.pos[0] == pos[0]): # if vertical move
-            for i in range(self.pos[1], pos[1]):
+            print("Hello")
+            for i in range(self.pos[0], pos[0]):
+                print("i: " + str(i))
                 if(board_list[i][self.pos[0]]):
+                    print(str(board_list[i][self.pos[0]]))
                     return False # There is a piece between the place and the rook 
         return True
 

@@ -11,25 +11,42 @@ class Knight(p):
             print("Out of board")
             return False
         board_list = board.get_board()
-        print(str(pos[0]) + " ==  " + str(self.pos[0] + 2))
-        if(pos[0] == self.pos[0] + 2 and pos[1] == self.pos[1] + 1 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team):
-            return True
-        if(pos[0] == self.pos[0] + 2 and pos[1] == self.pos[1] - 1 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team):
-            return True
-        if(pos[0] == self.pos[0] - 2 and pos[1] == self.pos[1] + 1 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team ):
-            return True
-        if(pos[0] == self.pos[0] - 2 and pos[1] == self.pos[1] - 1 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team ):
-            return True
-        if(pos[0] == self.pos[0] - 1 and pos[1] == self.pos[1] + 2 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team):
-            return True
-        if(pos[0] == self.pos[0] + 1 and pos[1] == self.pos[1] + 2 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team):
-            return True
-        if(pos[0] == self.pos[0] - 1 and pos[1] == self.pos[1] - 2 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team ):
-            return True
-        if(pos[0] == self.pos[0] + 1 and pos[1] == self.pos[1] - 2 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team ):
-            return True
-        return False
         
+        if(board_list[pos[0]][pos[1]]!=None):
+            if(pos[0] == self.pos[0] + 2 and pos[1] == self.pos[1] + 1 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team):
+                return True
+            if(pos[0] == self.pos[0] + 2 and pos[1] == self.pos[1] - 1 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team):
+                return True
+            if(pos[0] == self.pos[0] - 2 and pos[1] == self.pos[1] + 1 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team ):
+                return True
+            if(pos[0] == self.pos[0] - 2 and pos[1] == self.pos[1] - 1 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team ):
+                return True
+            if(pos[0] == self.pos[0] - 1 and pos[1] == self.pos[1] + 2 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team):
+                return True
+            if(pos[0] == self.pos[0] + 1 and pos[1] == self.pos[1] + 2 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team):
+                return True
+            if(pos[0] == self.pos[0] - 1 and pos[1] == self.pos[1] - 2 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team ):
+                return True
+            if(pos[0] == self.pos[0] + 1 and pos[1] == self.pos[1] - 2 and not board_list[pos[0]][pos[1]] or board_list[pos[0]][pos[1]].team != self.team ):
+                return True
+        else:
+            if(pos[0] == self.pos[0] + 2 and pos[1] == self.pos[1] + 1 and not board_list[pos[0]][pos[1]]):
+                return True
+            if(pos[0] == self.pos[0] + 2 and pos[1] == self.pos[1] - 1 and not board_list[pos[0]][pos[1]]):
+                return True
+            if(pos[0] == self.pos[0] - 2 and pos[1] == self.pos[1] + 1 and not board_list[pos[0]][pos[1]] ):
+                return True
+            if(pos[0] == self.pos[0] - 2 and pos[1] == self.pos[1] - 1 and not board_list[pos[0]][pos[1]] ):
+                return True
+            if(pos[0] == self.pos[0] - 1 and pos[1] == self.pos[1] + 2 and not board_list[pos[0]][pos[1]]):
+                return True
+            if(pos[0] == self.pos[0] + 1 and pos[1] == self.pos[1] + 2 and not board_list[pos[0]][pos[1]]):
+                return True
+            if(pos[0] == self.pos[0] - 1 and pos[1] == self.pos[1] - 2 and not board_list[pos[0]][pos[1]] ):
+                return True
+            if(pos[0] == self.pos[0] + 1 and pos[1] == self.pos[1] - 2 and not board_list[pos[0]][pos[1]] ):
+                return True
+        return False
 
     def get_playable_pos(self, board): 
         pos_list = []
