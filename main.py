@@ -6,12 +6,9 @@ board = Board()
 
 board.print_board()
 print("#####################################################")
-print(board.play(0, [0, 6], [0, 5]))
+print(board.play(1, [1, 0], [2, 0]))
 print("\n\nMOVE\n\n")
 board.print_board()
 
 
-print("#####################################################")
-print(board.play(1, [0, 1], [2, 2]))
-print("MOVE\n\n")
-board.print_board()
+
