@@ -50,7 +50,7 @@ class Knight(p):
 
     def get_playable_pos(self, board): 
         pos_list = []
-        if(self.is_legal()):
+        if(self.is_legal(board,self.pos)):
             pos_list.append([self.pos[0] + 2, self.pos[1] + 1])
             pos_list.append([self.pos[0] + 2, self.pos[1] - 1])
             pos_list.append([self.pos[0] - 2, self.pos[1] + 1])
