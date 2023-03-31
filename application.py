@@ -45,7 +45,6 @@ def transition_second_screen():
     WK = PhotoImage(file="images\standard-pack\WK.png")
     WN = PhotoImage(file="images\standard-pack\WN.png")
 
-
     WP1=canvas.create_image(0, 600, anchor=NW, image=WP)
     WP2=canvas.create_image(100, 600, anchor=NW, image=WP)
     WP3=canvas.create_image(200, 600, anchor=NW, image=WP)
@@ -209,9 +208,6 @@ def transition_second_screen():
     canvas.create_oval(330, 330, 370, 370,fill="black")
     button_game.destroy()
     button_quit.destroy()
-
-
-
     root.mainloop()
 
 #Button for transition
@@ -237,6 +233,23 @@ button_quit = Button(
     command=root.destroy)
 
 button_quit.place(x = 350, y = 600)
+
+def on_enter(e):
+    button_game['background'] = '#b58863'
+
+def on_enter2(e):
+    button_quit['background'] = '#b58863'
+
+def on_leave(e):
+    button_game['background'] = "#f1d9b5"
+
+def on_leave2(e):
+    button_quit['background'] = "#f1d9b5"
+
+button_game.bind("<Enter>", on_enter)
+button_quit.bind("<Enter>", on_enter2)
+button_game.bind("<Leave>", on_leave)
+button_quit.bind("<Leave>", on_leave2)
+
 # Starting the window
 root.mainloop()
-
