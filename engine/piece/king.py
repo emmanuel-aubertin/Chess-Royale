@@ -1,9 +1,14 @@
 from engine.piece.piece import Piece as p
 
 class King(p):
-    def __init__(self, team, pos):
+
+    def __init__(self, team):
         self.team = team
-        self.pos = pos
+        self.is_rockable = True
+        if(team == 1):
+            self.pos = [3, 0]
+        else:
+            self.pos = [3, 7]
 
     def is_legal(self, board, pos):
         if(not super().is_legal(pos)): # If not in board
@@ -12,9 +17,11 @@ class King(p):
         for i in range (0, 8):
             for j in range (0, 8):
                 if(board_list[i][j] != None and board_list[i][j].team != self.team):
-                    for e in  board_list[i][j].get_attacking_pos(board):
-                        if(e[0] == pos[0] and e[1] == pos[1]):
-                            return False
+                    attacking =  board_list[i][j].get_attacking_pos(board)
+                    if(attacking):
+                        for e in  attacking:
+                            if(e[0] == pos[0] and e[1] == pos[1]):
+                                return False
         return True
 
     # Get possible next move
@@ -40,7 +47,8 @@ class King(p):
                     print(i, j)
         return pos_list
 
-    def is_checkmate(self, board):
+    def is_check(self, board):
+        print("King check is_check")
         board_list = board.get_board()
         for i in range (0, 8):
             for j in range (0, 8):
@@ -61,6 +69,7 @@ class King(p):
                 return True
         return False
 
+<<<<<<< HEAD
     def get_type(self):
         return "K"
     
@@ -69,3 +78,7 @@ class King(p):
             self.pos = pos
             return True
         return False
+=======
+    def play(self):
+        self.is_rockable = False
+>>>>>>> 51d4d4940f5f112a17944138cac1146306fb5928
