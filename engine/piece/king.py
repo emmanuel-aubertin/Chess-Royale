@@ -1,9 +1,14 @@
 from engine.piece.piece import Piece as p
 
 class King(p):
-    def __init__(self, team, pos):
+
+    def __init__(self, team):
         self.team = team
-        self.pos = pos
+        self.is_rockable = True
+        if(team == 1):
+            self.pos = [3, 0]
+        else:
+            self.pos = [3, 7]
 
     def is_legal(self, board, pos):
         if(not super().is_legal(pos)): # If not in board
@@ -64,6 +69,7 @@ class King(p):
                 return True
         return False
 
+<<<<<<< HEAD
     def get_type(self):
         return "K"
     
@@ -72,3 +78,7 @@ class King(p):
             self.pos = pos
             return True
         return False
+=======
+    def play(self):
+        self.is_rockable = False
+>>>>>>> 51d4d4940f5f112a17944138cac1146306fb5928
