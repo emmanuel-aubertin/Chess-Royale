@@ -13,8 +13,10 @@ class Pawn(p):
         if(not super().is_legal(pos)):
             print("Out of board")
             return False
-        print(str(pos[0]) +" == " + str(self.pos[0]-1) +"and " + str(pos[1])  + "== " + str(self.pos[1])  +" and  not " + str(board_list[pos[0]][pos[1]]) + " |||| " + str())
-        if(pos[0] == self.pos[0]-1 and pos[1] == self.pos[1] and not board_list[pos[0]][pos[1]]):
+        print(str(pos[0]) + " == " + str(self.pos[0]-1) +"and " + str(pos[1])  + "== " + str(self.pos[1])  +" and  not " + str(board_list[pos[0]][pos[1]]) + " |||| " + str())
+        if((pos[0] == self.pos[0]-1 and pos[1]) == self.pos[1] and not board_list[pos[0]][pos[1]]):
+            return True
+        if((pos[0] == self.pos[0]+1 and pos[1]) == self.pos[1] and not board_list[pos[0]][pos[1]]):
             return True
         if(pos[0] == self.pos[0]+1 and pos[1] == self.pos[1]+1 and board_list[pos[0]][pos[1]] and board_list[pos[0]][pos[1]].team != self.team):
             return True
@@ -36,35 +38,24 @@ class Pawn(p):
         pos_list = []
         board_list = board.get_board()
         if(self.team==0):
-            print(board_list[self.pos[0]-1][self.pos[1]] == None or board_list[self.pos[0]-1][self.pos[1]])
-            if(board_list[self.pos[0]-1][self.pos[1]] == None or board_list[self.pos[0]-1][self.pos[1]]):
-                print("1")
-                pos_list.append([self.pos[0]-1,self.pos[1]])
-            if(board_list[self.pos[0]-1][ self.pos[1]+ 1] == None or board_list[self.pos[0]-1][ self.pos[1]+ 1]):
-                print("2")
-                pos_list.append([self.pos[0] - 1, self.pos[1] + 1])
-            if(board_list[self.pos[0] - 1][ self.pos[1] - 1]):
-                print("3")
+            if(board_list[self.pos[0], self.pos[1] - 1]):
+                pos_list.append([self.pos[0], self.pos[1] - 1])
+            if(board_list[self.pos[0] + 1, self.pos[1] - 1]):
+                pos_list.append([self.pos[0] + 1, self.pos[1] - 1])
+            if(board_list[self.pos[0] - 1, self.pos[1] - 1]):
                 pos_list.append([self.pos[0] - 1, self.pos[1] - 1])
-            print(board_list[self.pos[0]])
-            if(self.pos[0] == 6):
-                print("4")
-                pos_list.append([self.pos[0]-2, self.pos[1]])
+            if(self.pos[1] == 6):
+                pos_list.append([self.pos[0], self.pos[1] - 2])
 
         if(self.team==1):
-            if(board_list[self.pos[0]][self.pos[1] + 1]):
-                print("5")
+            if(board_list[self.pos[0], self.pos[1] + 1]):
                 pos_list.append([self.pos[0], self.pos[1] + 1])
-            if(board_list[self.pos[0] + 1][ self.pos[1] + 1]):
-                print("6")
+            if(board_list[self.pos[0] + 1, self.pos[1] + 1]):
                 pos_list.append([self.pos[0] + 1, self.pos[1] + 1])
-            if(board_list[self.pos[0] - 1][ self.pos[1] + 1]):
-                print("7")
+            if(board_list[self.pos[0] - 1, self.pos[1] + 1]):
                 pos_list.append([self.pos[0] - 1, self.pos[1] + 1])
             if(self.pos[1] == 1):
-                print("8")
                 pos_list.append([self.pos[0], self.pos[1] + 2])
-        return pos_list
 
     def get_type(self):
         return "P"
