@@ -13,6 +13,8 @@ class Bishop(p):
             print("Out of the broad")
             return False
         pos_1 = self.pos[1] 
+        if(self.pos[0] == pos[0] or self.pos[1] == pos[1]):
+            return False
         for i in range(self.pos[0]+1, pos[0]):
             
             if(self.pos[1] > pos[1]):
