@@ -98,7 +98,7 @@ frame = Frame(root)
 frame.pack()
 
 # Definition of canvas
-canvas = Canvas(frame,width=800, height=800)
+canvas = Canvas(frame,width=800, height=800, bg='#b58863')
 canvas.pack(expand = YES)
 
 # Adding the board
@@ -106,7 +106,7 @@ canvas.pack(expand = YES)
 #canvas.create_image(400, 400, image = board)
 def transition_second_screen():
     root.geometry("800x800")
-    root.title("Try")
+    root.title("Chess Royale")
 
     canvas.bind("<Button-1>",callback)
 
@@ -170,15 +170,30 @@ def transition_second_screen():
     canvas.create_oval(330, 330, 370, 370,fill="black")
     button_game.destroy()
     button_quit.destroy()
-
-
-
     root.mainloop()
 
-button_game = Button(frame,text ="1vsAI",command=transition_second_screen)
-button_game.place(x=400,y=0)
+logo = PhotoImage(file="images\logo2.png")
+canvas.create_image(-100, 0, anchor=NW, image=logo)
 
-button_quit = Button(frame,text ="Quitter",command=root.destroy)
-button_quit.place(x=400,y=20)
+button_game = Button(
+    frame,
+    text = "1 vs AI",
+    height = 3, 
+    width = 20,
+    bg = "#f1d9b5",
+    command=transition_second_screen)
+    
+button_game.place(x = 350, y = 500)
+
+button_quit = Button(
+    frame,
+    text ="Quitter",
+    height = 3, 
+    width = 20,
+    bg = "#f1d9b5",
+    command=root.destroy)
+
+button_quit.place(x = 350, y = 600)
+
 # Starting the window
 root.mainloop()
