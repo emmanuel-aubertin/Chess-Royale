@@ -6,7 +6,7 @@ board = Board()
 
 board.print_board()
 board.get_board()
-board.play(0, [6, 0], [5, 0])
+board.play(0, [0, 6], [0, 5])
 print("\n\nMOVE\n\n")
 board.print_board()
 
