@@ -14,10 +14,12 @@ class Board:
         for i in range(0, 8):
             for j in range(0, 8):
                 self.board[i][j] = None
+                
         for i in range(0, 8):
-            self.board[1][i] = Pawn(1, [1, i])
-            self.board[6][i] = Pawn(0, [6, i])
-        
+
+            self.board[i][1] = Pawn(1, [i, 1])
+            self.board[i][6] = Pawn(0, [i, 6])
+
         self.board[0][0] = Rook(1, [0, 0])
         self.board[7][0] = Rook(0, [7, 0])
 
