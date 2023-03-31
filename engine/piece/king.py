@@ -69,7 +69,6 @@ class King(p):
                 return True
         return False
 
-<<<<<<< HEAD
     def get_type(self):
         return "K"
     
@@ -78,7 +77,4 @@ class King(p):
             self.pos = pos
             return True
         return False
-=======
-    def play(self):
-        self.is_rockable = False
->>>>>>> 51d4d4940f5f112a17944138cac1146306fb5928
+

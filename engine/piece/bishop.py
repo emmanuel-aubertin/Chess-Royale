@@ -6,6 +6,8 @@ class Bishop(p):
         self.pos = pos 
 
     def is_legal(self, board, pos):
+        if not(abs(self.pos[0] - pos[0]) == abs(self.pos[1] - pos[1])):
+            return False
         if(self.pos[0] == pos[0] or self.pos[1] == pos[1]):
             return False
         board_list = board.get_board()
@@ -18,7 +20,7 @@ class Bishop(p):
             return False
         pos_1 = self.pos[1]
         pos_0 = self.pos[0]
-        for _ in range(self.pos[0]+1, max(pos[0]+1, pos[1]+1)):
+        '''for _ in range(self.pos[0]+1, max(pos[0]+1, pos[1]+1)):
             if(self.pos[0] > pos[0]):
                 pos_0 -= 1
             else:
@@ -37,6 +39,18 @@ class Bishop(p):
                     return False
                 return True
             if(board_list[pos_0][pos_1]):
+                return False'''
+        for i in range(self.pos[0]+1, 8):
+            if (board_list[i][i]):
+                return False
+        for i in range(self.pos[0]-1, 0):
+            if (board_list[i][i]):
+                return False
+        for i in range(self.pos[1]+1, 8):
+            if (board_list[i][i]):
+                return False
+        for i in range(self.pos[1]-1, 0):
+            if (board_list[i][i]):
                 return False
         return True
 

@@ -100,6 +100,37 @@ def transition_second_screen():
                 [WR1,WN1,WB1,WQ1,WK1,WB2,WN2,WR2],
                 [WP1,WP2,WP3,WP4,WP5,WP6,WP7,WP8]]
 
+    def get_mouse_pos(event):
+        if (len(str(event.x)) == 2):
+            x = 0
+        else:
+            x = int(str(event.x)[0])
+        if (len(str(event.y)) == 2):
+            y = 0
+        else:
+            y = int(str(event.y)[0])
+        return [x, y]
+
+
+    def play(event):
+        for j in canvas_item_possibility:
+            canvas.delete(j)
+
+        position = get_mouse_pos(event)
+        x = position[0]
+        y = position[1]
+        game_array = board2.get_board()
+        selected_piece = game_array[y][x]
+        if (selected_piece == None):
+            return
+        possible_moves = selected_piece.get_playable_pos(board2)
+        print(possible_moves)
+        for move in possible_moves:
+            oval = canvas.create_oval((move[1] * 100) + 30, (move[0] * 100) + 30,
+                                        ((move[1] + 1) * 100) - 30, ((move[0] + 1) * 100) - 30,
+                                        fill="black")
+            canvas_item_possibility.append(oval)
+
     def exception(event, item_possibility=item_possibilit, piece=piece, item_select=item_select, canvs_list=canvs_lis):
         print(item_select[0])
         fini = False
@@ -207,9 +238,8 @@ def transition_second_screen():
                                                     ((position[0] + 1) * 100) - 30, ((position[1] + 1) * 100) - 30)
                         canvas_item_possibility.append(myoval)
 
-    canvas.bind("<Button-1>", exception)
+    canvas.bind("<Button-1>", play)
     canvas.pack()
-    canvas.create_oval(330, 330, 370, 370,fill="black")
     button_game.destroy()
     button_quit.destroy()
     root.mainloop()
