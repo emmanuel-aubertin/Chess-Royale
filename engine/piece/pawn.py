@@ -41,7 +41,7 @@ class Pawn(p):
             if (board_list[self.pos[0] - 1][self.pos[1]] == None or board_list[self.pos[0] - 1][self.pos[1]]):
                 print("1")
                 pos_list.append([self.pos[0] - 1, self.pos[1]])
-            if (board_list[self.pos[0] - 1][self.pos[1] + 1] == None or board_list[self.pos[0] - 1][self.pos[1] + 1]):
+            if (board_list[self.pos[0] - 1][self.pos[1] + 1]):
                 print("2")
                 pos_list.append([self.pos[0] - 1, self.pos[1] + 1])
             if (board_list[self.pos[0] - 1][self.pos[1] - 1]):
@@ -53,15 +53,15 @@ class Pawn(p):
                 pos_list.append([self.pos[0] - 2, self.pos[1]])
 
         if (self.team == 1):
-            if (board_list[self.pos[0]][self.pos[1] + 1]):
+            if (board_list[self.pos[0] + 1][self.pos[1]]):
                 print("5")
-                pos_list.append([self.pos[0], self.pos[1] + 1])
+                pos_list.append([self.pos[0] + 1, self.pos[1]])
             if (board_list[self.pos[0] + 1][self.pos[1] + 1]):
                 print("6")
                 pos_list.append([self.pos[0] + 1, self.pos[1] + 1])
-            if (board_list[self.pos[0] - 1][self.pos[1] + 1]):
+            if (board_list[self.pos[0] + 1][self.pos[1] - 1]):
                 print("7")
-                pos_list.append([self.pos[0] - 1, self.pos[1] + 1])
+                pos_list.append([self.pos[0] + 1, self.pos[1] - 1])
             if (self.pos[1] == 1):
                 print("8")
                 pos_list.append([self.pos[0], self.pos[1] + 2])
