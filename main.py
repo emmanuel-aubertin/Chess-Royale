@@ -1,9 +1,9 @@
 from tkinter import *
 from engine.board import Board
-import playsound # pip install playsound==1.2.2
+import playsound # pip install playsound==1.2.2 AppKit
 
 def sound():
-    playsound.playsound('sounds\ChessMove1.mp3')
+    playsound.playsound('sounds/ChessMove1.mp3')
 
 print("Call constructor")
 board = Board()
