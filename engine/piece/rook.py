@@ -1,4 +1,4 @@
-from piece import Piece as p
+from engine.piece.piece import Piece as p
 
 class Rook(p):
     def __init__(self, team, pos):
@@ -6,18 +6,25 @@ class Rook(p):
         self.pos = pos
 
     def is_legal(self, board, pos):
+        print("Rook legal")
         board_list = board.get_board()
         if(not super().is_legal(pos)): # If not in board
+            print("Out of the broad")
             return False
-        if(pos[0] != self.pos[0] and pos[1] != self.pos[1] or  pos[1] != self.pos[1] and pos[0] != self.pos[0]):
+        if((pos[0] != self.pos[0] and pos[1] != self.pos[1])or ( pos[1] != self.pos[1] and pos[0] != self.pos[0])):
             return False
         if(self.pos[1] == pos[1]): # if horizontal move
-            for i in range(self.pos[0], pos[0]):
-                if(board_list[self.pos[1]][i]):
+            print("Vertical move")
+            for i in range(self.pos[0]+1, pos[0]):
+                print("Checking : "+ str(i) + " " + str(self.pos[1]))
+                if(board_list[i][self.pos[1]]):
                     return False # There is a piece between the place and the rook
         if(self.pos[0] == pos[0]): # if vertical move
-            for i in range(self.pos[1], pos[1]):
-                if(board_list[i][self.pos[0]]):
+            print("Horizontal move")
+            for i in range(self.pos[1]+1, pos[1]):
+                print("i: " + str(i))
+                if(board_list[self.pos[0]][i]):
+                    print(str(board_list[i][self.pos[0]]))
                     return False # There is a piece between the place and the rook 
         return True
 
@@ -69,4 +76,13 @@ class Rook(p):
         for e in playable_pos:
             if(e == pos):
                 return True
+        return False
+
+    def get_type(self):
+        return "R"
+
+    def play(self, board, pos):
+        if (self.is_legal(board, pos)):
+            self.pos = pos
+            return True
         return False
