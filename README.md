@@ -1,4 +1,4 @@
-# Chess-Royale
+# Chess Royale
 
 Chess game developped in a 24-hour challenge
 
