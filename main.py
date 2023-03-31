@@ -12,6 +12,6 @@ board.print_board()
 
 
 print("#####################################################")
-print(board.play(1, [0, 1], [2, 2]))
+print(board.play(1, [4, 4], [3, 6]))
 print("MOVE\n\n")
 board.print_board()
