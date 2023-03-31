@@ -63,9 +63,10 @@ class Pawn(p):
             if (board_list[self.pos[0] + 1][self.pos[1]] == None):
                 print("5")
                 pos_list.append([self.pos[0] + 1, self.pos[1]])
-            if (board_list[self.pos[0] + 1][self.pos[1] + 1] != None and board_list[self.pos[0] + 1][self.pos[1] + 1].team != self.team):
-                print("6")
-                pos_list.append([self.pos[0] + 1, self.pos[1] + 1])
+            if (self.pos[1] != 7):
+                if (board_list[self.pos[0] + 1][self.pos[1] + 1] != None and board_list[self.pos[0] + 1][self.pos[1] + 1].team != self.team):
+                    print("6")
+                    pos_list.append([self.pos[0] + 1, self.pos[1] + 1])
             if (board_list[self.pos[0] + 1][self.pos[1] - 1] != None and board_list[self.pos[0] + 1][self.pos[1] - 1].team != self.team):
                 print("7")
                 pos_list.append([self.pos[0] + 1, self.pos[1] - 1])
@@ -78,7 +79,5 @@ class Pawn(p):
         return "P"
 
     def play(self, board, pos):
-        if (self.is_legal(board, pos)):
-            self.pos = pos
-            return True
-        return False
+        self.pos = pos
+        return True

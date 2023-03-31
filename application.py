@@ -7,13 +7,17 @@ def OST():
 
 OST()
 
+def Sound():
+    playsound.playsound('sounds/ChessMove1.mp3')
+
 # Definitions of main window
 board2=Board()
 
-item_select=[False]
-item_possibilit=[None]
+
+selected_piece =[None]
+
 canvas_item_possibility=[]
-piece=[None]
+
 game_finish=[False]
 canvs_lis=[None]
 #Fonction to print futur positon of our piece
@@ -29,6 +33,9 @@ frame.pack()
 canvas = Canvas(frame,width=800, height=800, bg='#b58863')
 canvas.pack(expand = YES)
 
+board = PhotoImage(file="images/standard-pack/Board.png")
+canvas.create_image(400, 400, image=board)
+
 # Adding the board
 #board = PhotoImage(file = "images/standard-pack/Board.png")
 #canvas.create_image(400, 400, image = board)
@@ -37,7 +44,7 @@ def transition_second_screen():
     root.title("Try")
 
     # Adding the board
-    board = PhotoImage(file="images/standard-pack/Board.png")
+    board = PhotoImage(file="images/standard-pack/Board2.png")
     canvas.create_image(400, 400, image=board)
 
     # Adding pieces to the board
@@ -91,14 +98,28 @@ def transition_second_screen():
     BN2=canvas.create_image(600, 0, anchor=NW, image=BN)
     BR2=canvas.create_image(700, 0, anchor=NW, image=BR)
 
-    canvs_list=[[BR1,BN1,BB1,BQ1,BK1,BB2,BN2,BR2],
-                [BP1,BP2,BP3,BP4,BP5,BP6,BP7,BP8],
+    def load_canvas(list):
+        canvas.delete("all")
+        board = PhotoImage(file="images/standard-pack/Board2.png")
+        canvas.create_image(400, 400, image=board)
+        canvas.pack()
+
+        for i in range(len(list)):
+            for j in range(len(list[0])):
+                canvas.create_image(j*100, i*100, anchor=NW, image=list[i][j])
+        root.mainloop()
+
+
+    global canvas_list
+    canvas_list=[[BR,BN,BB,BQ,BK,BB,BN,BR],
+                [BP,BP,BP,BP,BP,BP,BP,BP],
                 [None,None,None,None,None,None,None,None],
                 [None,None,None,None,None,None,None,None],
                 [None,None,None,None,None,None,None,None],
                 [None,None,None,None,None,None,None,None],
-                [WR1,WN1,WB1,WQ1,WK1,WB2,WN2,WR2],
-                [WP1,WP2,WP3,WP4,WP5,WP6,WP7,WP8]]
+                [WP,WP,WP,WP,WP,WP,WP,WP],
+                 [WR,WN,WB,WQ,WK,WB,WN,WR]
+                ]
 
     def get_mouse_pos(event):
         if (len(str(event.x)) == 2):
@@ -113,130 +134,50 @@ def transition_second_screen():
 
 
     def play(event):
-        for j in canvas_item_possibility:
-            canvas.delete(j)
+        #global selected_piece
+        global canvas_list
+        if (selected_piece[0] == None):
+            for j in canvas_item_possibility:
+                canvas.delete(j)
 
-        position = get_mouse_pos(event)
-        x = position[0]
-        y = position[1]
-        game_array = board2.get_board()
-        selected_piece = game_array[y][x]
-        if (selected_piece == None):
-            return
-        possible_moves = selected_piece.get_playable_pos(board2)
-        print(possible_moves)
-        for move in possible_moves:
-            oval = canvas.create_oval((move[1] * 100) + 30, (move[0] * 100) + 30,
-                                        ((move[1] + 1) * 100) - 30, ((move[0] + 1) * 100) - 30,
-                                        fill="black")
-            canvas_item_possibility.append(oval)
-
-    def exception(event, item_possibility=item_possibilit, piece=piece, item_select=item_select, canvs_list=canvs_lis):
-        print(item_select[0])
-        fini = False
-        # Check if item was not selected
-        if (item_select[0] == False):
-            value_x = 0
-            value_y = 0
-            x_done = False
-            y_done = False
-            # Calcul position in our board
-            for i in range(8):
-                if (i * 100 > event.x and x_done != True):
-                    value_x = (i - 1)
-                    x_done = True
-                elif (i * 100 == event.x and x_done != True):
-                    value_x = (i)
-                    x_done = True
-                if (i * 100 > event.y and y_done != True):
-                    value_y = (i - 1)
-                    y_done = True
-                elif (i * 100 == event.y and y_done != True):
-                    value_y = (i)
-                    y_done = True
-                if (y_done and x_done):
-                    break
-            piece[0] = board2.get_board()[value_y][value_x]
-            # If we find a piece we get is different possibility
-            if (piece[0] != None):
-                item_possibility[0] = piece[0].get_playable_pos(board2)
-                if (item_possibility[0] != None):
-                    for i in item_possibility[0]:
-                        position = i
-                        canvas.create_oval((position[1] * 100) + 30, (position[0] * 100) + 30,
-                                           ((position[1] + 1) * 100) - 30, ((position[0] + 1) * 100) - 30, fill="black")
-                        myoval = canvas.create_oval((position[1] * 100) + 30, (position[0] * 100) + 30,
-                                                    ((position[1] + 1) * 100) - 30, ((position[0] + 1) * 100) - 30,
-                                                    fill="black")
-                        canvas_item_possibility.append(myoval)
-                        item_select[0] = True
-        else:  # Check if a item is select
-            value_x = 0
-            value_y = 0
-            x_done = False
-            y_done = False
-            # Calcul position in our board
-            for i in range(8):
-                if (i * 100 > event.x and x_done != True):
-                    value_x = (i - 1)
-                    x_done = True
-                elif (i * 100 == event.x and x_done != True):
-                    value_x = (i)
-                    x_done = True
-                if (i * 100 > event.y and y_done != True):
-                    value_y = (i - 1)
-                    y_done = True
-                elif (i * 100 == event.y and y_done != True):
-                    value_y = (i)
-                    y_done = True
-                if (y_done and x_done):
-                    break
-            piece_resultat = board2.get_board()[value_x][value_y]
-            # Search if where we clicke was a possibility
-            print(value_x, " ", value_y)
-            print(item_possibility)
-            for j in item_possibility:
-                for i in j:
-                    print(i)
-                    print(value_x, " ", value_y)
-                    if (i[0] == value_y and i[1] == value_x):
-                        print(piece[0].pos[0], " ", piece[0].pos[1])
-                        print(canvs_list)
-                        board2.get_board()[piece[0].pos[0]][piece[0].pos[1]] = piece[0]
-                        canvas.itemconfigure(canvs_list[piece[0].pos[0]][piece[0].pos[1]], x=value_y, y=value_x)
-                        piece[0].pos = [value_y, value_x]
-                        # Check if the game is finish
-                        # if(board.is_finish()):
-                        #   game_finish=True
-                        #  fini=True
-                        # break
-                        piece[0] = None
-                        # Destroy every possibility in the board
-                        for j in canvas_item_possibility:
-                            print(j)
-                            canvas.delete(j)
-                        item_select = False
-                        item_possibility = None
-                        fini = True
-                        # resultat=minmax(10,board,1)
-                        # resultat[2].go(resultat[1][0],resultat[1][0])
-                        # if (board.is_finish()):
-                        #    fini = True
-                        #    game_finish=True
-                        break
-            # In the case were you clicked in another piece
-            if (piece_resultat != piece and fini != True):
-                # Check if you clicked was a piece . So we change possibility
-                if (piece_resultat != None):
+            position = get_mouse_pos(event)
+            x = position[0]
+            y = position[1]
+            game_array = board2.get_board()
+            selected_piece[0] = game_array[y][x]
+            if (selected_piece[0] == None):
+                return
+            possible_moves = selected_piece[0].get_playable_pos(board2)
+            print(possible_moves)
+            for move in possible_moves:
+                oval = canvas.create_oval((move[1] * 100) + 30, (move[0] * 100) + 30,
+                                            ((move[1] + 1) * 100) - 30, ((move[0] + 1) * 100) - 30,
+                                            fill="black")
+                canvas_item_possibility.append(oval)
+        else:
+            position = get_mouse_pos(event)
+            x = position[0]
+            y = position[1]
+            game_array = board2.get_board()
+            possible_moves = selected_piece[0].get_playable_pos(board2)
+            for move in possible_moves:
+                if ([y,x] == move): #The move is valid, we play it
                     for j in canvas_item_possibility:
                         canvas.delete(j)
-                    piece = piece_resultat
-                    item_possibility = board.get(value_x, value_y).possibility
-                    for i in item_possibility:
-                        position = i.get_position()
-                        myoval = canvas.create_oval((position[0] * 100) + 30, (position[1] * 100) + 30,
-                                                    ((position[0] + 1) * 100) - 30, ((position[1] + 1) * 100) - 30)
-                        canvas_item_possibility.append(myoval)
+                    temp = canvas_list[selected_piece[0].pos[0]][selected_piece[0].pos[1]]
+                    canvas_list[selected_piece[0].pos[0]][selected_piece[0].pos[1]] = None
+                    canvas_list[y][x] = temp
+                    print(board2.play(selected_piece[0].team, selected_piece[0].pos, [y, x]))
+                    selected_piece[0] = None
+                    board2.print_board()
+                    load_canvas(canvas_list)
+                    return
+            #The move was not valid, we update de selected piece
+            selected_piece[0] = game_array[y][x]
+            return
+
+
+
 
     canvas.bind("<Button-1>", play)
     canvas.pack()

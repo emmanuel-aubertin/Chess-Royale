@@ -86,7 +86,6 @@ class Knight(p):
         return "N"
     
     def play(self, board, pos):
-        if (self.is_legal(board, pos)):
-            self.pos = pos
-            return True
-        return False
+        self.pos = pos
+        return True
+
