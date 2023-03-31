@@ -48,15 +48,13 @@ class Board:
         return self.board
 
     def play(self, team, pos, new_pos):
-        if(not self.board[pos[0]][pos[1]]):
+        if(self.board[pos[0]][pos[1]] == None):
             print("\n \tTeam = " + str(team) + "\tType : 0\tPos " + str(pos) + "\tNew Pos : " + str(new_pos))
             return False
         else:
             print("\n \tTeam = " + str(team) + "\tType : " + self.board[pos[0]][pos[1]].get_type() +"\tPos " + str(pos) + "\tNew Pos : " + str(new_pos))
             
         print("Team 0 is playing")
-        #print("self.board[pos[0]][pos[1]].team == team ==> " + str(self.board[pos[0]][pos[1]].team == team))
-        #print("self.board[pos[0]][pos[1]].play(self, new_pos) ==> " + str(self.board[pos[0]][pos[1]].play(self, new_pos)))
         if (self.board[pos[0]][pos[1]].team == team and self.board[pos[0]][pos[1]].play(self, new_pos)):   # checker si c'est égal à une pièce blanche
             self.board[new_pos[0]][new_pos[1]] = self.board[pos[0]][pos[1]]
             print("Old pos ("+ str(pos[0]) +  ", "+ str(pos[1]) + ") = " + self.board[pos[0]][pos[1]].get_type())
