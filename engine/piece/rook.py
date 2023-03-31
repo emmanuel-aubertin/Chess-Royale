@@ -73,3 +73,9 @@ class Rook(p):
 
     def get_type(self):
         return "R"
+
+    def play(self, board, pos):
+        if (self.is_legal(board, pos)):
+            self.pos = pos
+            return True
+        return False

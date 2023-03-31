@@ -8,15 +8,29 @@ class Pawn(p):
         self.pos = pos
 
     def is_legal(self, board, pos):
-        return super().is_legal(pos)
+        print("Is pawn legal")
+        board_list = board.get_board()
+        if(not super().is_legal(pos)):
+            print("Out of board")
+            return False
+        print(str(pos[0]) +" == " + str(self.pos[0]-1) +"and " + str(pos[1])  + "== " + str(self.pos[1])  +" and  not " + str(board_list[pos[0]][pos[1]]) + " |||| " + str())
+        if(pos[0] == self.pos[0]-1 and pos[1] == self.pos[1] and not board_list[pos[0]][pos[1]]):
+            return True
+        if(pos[0] == self.pos[0]+1 and pos[1] == self.pos[1]+1 and board_list[pos[0]][pos[1]] and board_list[pos[0]][pos[1]].team != self.team):
+            return True
+        if(pos[0] == self.pos[0]-1 and pos[1] == self.pos[1]-1 and board_list[pos[0]][pos[1]] and board_list[pos[0]][pos[1]].team != self.team):
+            return True
+        return False
+    
 
     def is_promote(self, board):
         if (self.team):
             if (board.curr_pos() == 0):
-                self.promote()
+                return True
         else:
             if (board.curr_pos() == 7):
-                self.promote()
+                return True
+        return False
     
     def get_playable_pos(self, board):
         pos_list = []
